@@ -76,20 +76,48 @@ const config: HardhatUserConfig = {
     tests: "./test",
   },
   solidity: {
-    version: "0.8.9",
-    settings: {
-      metadata: {
-        // Not including the metadata hash
-        // https://github.com/paulrberg/solidity-template/issues/31
-        bytecodeHash: "none",
+    compilers: [
+      {
+        version: "0.8.9",
+        settings: {
+          metadata: {
+            // Not including the metadata hash
+            // https://github.com/paulrberg/solidity-template/issues/31
+            bytecodeHash: "none",
+          },
+          // Disable the optimizer when debugging
+          // https://hardhat.org/hardhat-network/#solidity-optimizer-support
+          optimizer: {
+            enabled: true,
+            runs: 800,
+          },
+        },
       },
-      // Disable the optimizer when debugging
-      // https://hardhat.org/hardhat-network/#solidity-optimizer-support
-      optimizer: {
-        enabled: true,
-        runs: 800,
+      {
+        version: "0.8.6",
       },
-    },
+      {
+        version: "0.8.4",
+      },
+      {
+        version: "0.7.0",
+      },
+      {
+        version: "0.6.11",
+      },
+      {
+        version: "0.6.7",
+      },
+      {
+        version: "0.6.0",
+      },
+      {
+        version: "0.5.17",
+      },
+      {
+        version: "0.5.16",
+      },
+    ],
   },
   typechain: {
     outDir: "typechain",
